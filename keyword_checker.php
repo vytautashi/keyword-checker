@@ -18,7 +18,9 @@ function main()
         print_help();
     }
 
-    fetch_and_parse_rankings($keywords, $search_url, $useragent);
+    $json_result = fetch_and_parse_rankings($keywords, $search_url, $useragent);
+
+    echo $json_result;
 }
 
 function fetch_and_parse_rankings($keywords, $search_url, $useragent)
@@ -41,7 +43,7 @@ function fetch_and_parse_rankings($keywords, $search_url, $useragent)
             . '}';
     }, $keywords);
 
-    echo "[" . implode(",", $res) . "]";
+    return "[" . implode(",", $res) . "]";
 }
 
 
