@@ -29,16 +29,16 @@ function fetch_and_parse_rankings($keywords, $search_url, $useragent)
 
         $url = $search_url . rawurlencode($k);
         $res = fetch($url, $useragent);
-        $positions = '""';
+        $positions = [];
 
         if ($res[1] === null) {
-            $positions = json_encode(parse_rankings($res[0]), JSON_UNESCAPED_SLASHES);
+            $positions = parse_rankings($res[0]);
         }
 
         return '{'
             . '"fetch_url": "' . $url . '",'
             . '"keyword": "' . $k . '",'
-            . '"positions": ' . $positions . ','
+            . '"positions": ' . json_encode($positions, JSON_UNESCAPED_SLASHES) . ','
             . '"error": "' . $res[1] . '"'
             . '}';
     }, $keywords);
