@@ -3,7 +3,7 @@
 // finds website positions in search engine
 // for specific keywords.
 
-const WEBSITE = 'https://golang.org/';
+const WEBSITE = 'https://go.dev/';
 const KEYWORDS = 'golang,google programming,design';
 
 main();
