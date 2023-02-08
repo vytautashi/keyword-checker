@@ -1,5 +1,5 @@
 <?php
-const VERSION = '1.0.0v';
+const VERSION = '1.0.1v';
 const DEFAULT_SEARCH_URL = 'https://www.google.com/search?num=10&q=';
 const DEFAULT_USERAGENT = '';
 
@@ -52,7 +52,7 @@ function parse_rankings($html)
     $dom = new DOMDocument;
     @$dom->loadHTML($html);
     $xpath = new DOMXpath($dom);
-    $links = $xpath->query("//a[./h3 and starts-with(@href, '/url?q=')]");
+    $links = $xpath->query("//a[.//h3 and starts-with(@href, '/url?q=')]");
 
     $urls_raw = [];
     foreach ($links as $link) {
